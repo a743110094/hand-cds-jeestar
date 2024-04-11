@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hand.cds.qms.mapper.InspectionTasksMapper">
+
+    <resultMap id="BaseResultMap" type="hand.cds.qms.domain.InspectionTasks">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="no" column="no" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="qty" column="qty" jdbcType="INTEGER"/>
+            <result property="passQty" column="pass_qty" jdbcType="INTEGER"/>
+            <result property="rejectQty" column="reject_qty" jdbcType="INTEGER"/>
+            <result property="unit" column="unit" jdbcType="VARCHAR"/>
+            <result property="origin" column="origin" jdbcType="VARCHAR"/>
+            <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+            <result property="createdBy" column="created_by" jdbcType="VARCHAR"/>
+            <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+            <result property="updatedBy" column="updated_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,no,
+        type,status,qty,
+        pass_qty,reject_qty,unit,
+        origin,created_time,created_by,
+        updated_time,updated_by
+    </sql>
+</mapper>
