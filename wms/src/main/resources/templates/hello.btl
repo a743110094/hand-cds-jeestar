@@ -54,8 +54,8 @@
             </thead>
             <tbody>
                  <% for(mallOrder in list){ %>
-                       <%if (orderLP.index== 1) {%> <tr class="am-active"> <%} else{%> <tr> <%}%>
-                        <td>${orderLP.index}</td>
+                       <%if (mallOrderLP.index== 1) {%> <tr class="am-active"> <%} else{%> <tr> <%}%>
+                        <td>${mallOrderLP.index}</td>
                         <td>${mallOrder.name!}</td>
                         <td>${mallOrder.no!}</td>
                         <td><b style="color:red">${mallOrder.orderNo!}</b></td>

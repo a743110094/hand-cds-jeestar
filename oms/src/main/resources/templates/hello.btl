@@ -41,17 +41,17 @@
                 </tr>
             </thead>
             <tbody>
-                 <% for(mallOrder in list){ %>
+                 <% for(order in list){ %>
                         <tr>
                         <td>${orderLP.index}</td>
-                        <td>${mallOrder.name}</td>
-                        <td>${mallOrder.no}</td>
-                        <td style="color:red"><b>${mallOrder.fullfillNo}</b></td>
-                        <td>${mallOrder.origin}</td>
-                        <td>${mallOrder.createdTime,"yyyy-MM-dd HH:mm:ss"}</td>
-                        <td>${mallOrder.createdBy}</td>
-                        <td>${mallOrder.updatedTime,"yyyy-MM-dd HH:mm:ss"}</td>
-                        <td>${mallOrder.updatedBy}</td>
+                        <td>${order.name}</td>
+                        <td>${order.no}</td>
+                        <td style="color:red"><b>${order.fullfillNo}</b></td>
+                        <td>${order.origin}</td>
+                        <td>${order.createdTime,"yyyy-MM-dd HH:mm:ss"}</td>
+                        <td>${order.createdBy}</td>
+                        <td>${order.updatedTime,"yyyy-MM-dd HH:mm:ss"}</td>
+                        <td>${order.updatedBy}</td>
                         </tr>
                  <% }  %>
             </tbody>
