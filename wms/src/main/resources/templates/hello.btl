@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMS系统</title>
+    <!-- 引入Bootstrap CSS -->
+  <!-- 引入 layui 的 CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/amazeui/2.7.2/css/amazeui.min.css" integrity="sha512-vufT+LBYaGg6j/YT5Uku6G1TsKx9GUscDMt69vrWuu0S245ixVfj9FD0AjRpbEkaWWww7yyFRZBSiPsVdt6XcQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+        /* 为了确保表格在页面中间显示，我们可以给其父容器设置一个class并编写CSS */
+        .container-center {
+            width: 98%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 或者设置一个适合的高度，以便内容垂直居中 */
+        }
+
+        /* 也可以直接对.table-responsive或.table进行居中处理 */
+        .table-centered {
+            margin: 0 auto !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container container-center">
+    <div class="table-responsive">
+        <h1 style="text-align:center">WMS 库房拣货任务看板</h1>
+        <table class="am-table am-table-hover am-table-bordered am-table-radius am-table-striped">
+            <thead>
+                <tr>
+                    <!-- 表头单元格，这里假设10列 -->
+                    <th>序号</th>
+                    <th>任务名称</th>
+                    <th>任务编号</th>
+                    <th><b>订单号</b></th>
+                    <th>类型</th>
+                    <th>仓库</th>
+                    <th>子库</th>
+                    <th>货位</th>
+                    <th>物料</th>
+                    <th>数量</th>
+                    <th>单位</th>
+                    <th>作业人</th>
+                    <th>状态</th>
+                    <th><b>数据来源</b></th>
+                    <th>创建时间</th>
+                    <th>创建人</th>
+                    <th>更新时间</th>
+                    <th>更新人</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <% for(mallOrder in list){ %>
+                       <%if (orderLP.index== 1) {%> <tr class="am-active"> <%} else{%> <tr> <%}%>
+                        <td>${orderLP.index}</td>
+                        <td>${mallOrder.name!}</td>
+                        <td>${mallOrder.no!}</td>
+                        <td><b style="color:red">${mallOrder.orderNo!}</b></td>
+                        <td>${mallOrder.type!}</td>
+                        <td>${mallOrder.warehouse!}</td>
+                        <td>${mallOrder.subInventory!}</td>
+                        <td>${mallOrder.lot!}</td>
+                        <td>${mallOrder.itemCode!}</td>
+                        <td>${mallOrder.qty!}</td>
+                        <td>${mallOrder.unit!}</td>
+                        <td>${mallOrder.operator!}</td>
+                        <td>${mallOrder.status!}</td>
+                        <td><b>${mallOrder.origin!}</b></td>
+                        <td>${mallOrder.createdTime!,"yyyy-MM-dd HH:mm:ss"}</td>
+                        <td>${mallOrder.createdBy!}</td>
+                        <td>${mallOrder.updatedTime!,"yyyy-MM-dd HH:mm:ss"}</td>
+                        <td>${mallOrder.updatedBy!}</td>
+                        </tr>
+                 <% }  %>
+            </tbody>
+        </table>
+        <div>  当前页码  ${page} </div>
+    </div>
+</div>
+
+    <!-- 选项 1：jQuery 和 Bootstrap 集成包（集成了 Popper） -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/amazeui/2.7.2/js/amazeui.min.js" integrity="sha512-oB7uk9N7v9b8HN561V7feKwyDoYMMEN28G0oaipM8p85jIWQx65COGYSP55k2r/WaRAdFwDnYI0hkuY/r2eaMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hand.cds.mall.mapper.MallOrderMapper">
+
+    <resultMap id="BaseResultMap" type="hand.cds.mall.domain.MallOrder">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="no" column="no" jdbcType="VARCHAR"/>
+        <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
+        <result property="origin" column="origin" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="itemQty" column="item_qty" jdbcType="INTEGER"/>
+        <result property="customerName" column="customer_name" jdbcType="VARCHAR"/>
+        <result property="expressNo" column="express_no" jdbcType="VARCHAR"/>
+        <result property="payType" column="pay_type" jdbcType="VARCHAR"/>
+        <result property="deliveryTime" column="delivery_time" jdbcType="TIMESTAMP"/>
+        <result property="receiptTime" column="receipt_time" jdbcType="TIMESTAMP"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="createdBy" column="created_by" jdbcType="VARCHAR"/>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+        <result property="updatedBy" column="updated_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,no,store_name,
+        origin,status,item_qty,
+        customer_name,express_no,pay_type,
+        delivery_time,receipt_time,created_time,
+        created_by,updated_time,updated_by
+    </sql>
+</mapper>

@@ -1,0 +1,95 @@
+beetl:
+  enabled: true
+  suffix: html
+server:
+  compression:
+    enabled: true
+    min-response-size: 1KB
+spring:
+  application:
+    name: cds-suppose-mall
+  main:
+    lazy-initialization: true
+  datasource:
+    dynamic:
+      lazy: true
+      druid:
+        async-init: true
+        initial-size: 2
+        min-idle: 2
+        max-active: 20
+        connect-timeout: 3_000
+        socket-timeout: 5_000
+        # 连接保活
+        #打开KeepAlive之后的效果
+        #1>初始化连接池时会填充到minIdle数量。
+        #2>连接池中的minIdle数量以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作。
+        #3>当网络断开等原因产生的由ExceptionSorter检测出来的死连接被清除后，自动补充连接到minIdle数量。
+        #连接池中的minIdle数量以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作
+        keep-alive: true
+        # 连接空闲时间大于保活检查间隔时间
+        # keepAliveBetweenTimeMillis must be greater than timeBetweenEvictionRunsMillis
+        keep-alive-between-time-millis: 60_000
+        log-abandoned: true
+        # 检测空闲连接 不影响性能，建议开启
+        test-while-idle: true
+        # 检测连接有效的SQL 为空则test-while-idle、test-on-borrow、test-on-return配置失效
+        validation-query: SELECT 1
+        # 检测连接是否有效的超时时间
+        validation-query-timeout: 3
+        # 连接空闲时间大于该值，不管minIdle都关闭该连接 默认7小时
+        max-evictable-idle-time-millis: 7200_000
+        # 连接空闲时间大于该值并且池中空闲连接大于minIdle则关闭该连接 默认30分钟
+        min-evictable-idle-time-millis: 300_000
+        # 检测关闭空闲连接的时间间隔（单位：毫秒）
+        time-between-eviction-runs-millis: 30_000
+        use-unfair-lock: true
+        # 是否开启PSCache，即是否缓存preparedStatement（提升写入、查询效率）
+        # 建议在支持游标的数据库开启，例如：Oracle
+        # 不建议MYSQL开启
+        pool-prepared-statements: false
+        # 每个连接上PSCache的最大值
+        # 如果大于0，pool-prepared-statements自动开启
+        max-pool-prepared-statement-per-connection-size: -1
+        filters: wall,stat
+        # SQL统计过滤器配置
+        stat:
+          # 启用SQL统计过滤器
+          enabled: true
+          # 启用慢SQL日志记录
+          log-slow-sql: true
+          # 慢SQL的执行时间阈值（单位：毫秒）
+          slow-sql-millis: 500
+          # 慢SQL日志级别
+          slow-sql-log-level: ERROR
+          # 开启后，select * from table where id = 1 和 select * from table where id = 2 将合并为 select * from table where id = ?
+          merge-sql: false
+        # SQL防火墙配置
+        wall:
+          enabled: true
+          config:
+            # 允许新增
+            insert-allow: true
+            # 允许更新
+            update-allow: true
+            # 禁止更新时无条件
+            update-where-none-check: false
+            # 允许删除
+            delete-allow: true
+            # 禁止删除时无条件
+            delete-where-none-check: false
+            # 禁止对表ALTER
+            alter-table-allow: false
+            # 禁止对表DROP
+            drop-table-allow: false
+      datasource:
+        master:
+          url: jdbc:mariadb://172.22.2.4:31306/cds_mall?useCursorFetch=true&useAffectedRows=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&allowMultiQueries=true
+          username: cds
+          password: cds
+          type: com.alibaba.druid.pool.DruidDataSource
+mybatis-plus:
+  lazy-initialization: true
+logging:
+  level:
+    hand.cds.mall.mapper: debug
